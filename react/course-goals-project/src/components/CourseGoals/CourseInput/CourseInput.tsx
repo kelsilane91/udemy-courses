@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent, useState } from "react";
 
 import Button from "../../UI/Button/Button";
-import "./CourseInput.css";
+import styles from "./CourseInput.module.css";
 
 type Props = {
   onAddGoal: (enteredValue: string) => void;
@@ -28,7 +28,9 @@ const CourseInput = ({ onAddGoal }: Props) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className={`form-control ${!isValid ? "invalid" : ""}`}>
+      <div
+        className={`${styles["form-control"]} ${!isValid && styles.invalid}`}
+      >
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </div>

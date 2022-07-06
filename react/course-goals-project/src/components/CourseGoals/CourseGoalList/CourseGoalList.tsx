@@ -1,7 +1,7 @@
 import React from "react";
 
 import CourseGoalItem from "../CourseGoalItem/CourseGoalItem";
-import "./CourseGoalList.css";
+import styles from "./CourseGoalList.module.css";
 
 type Props = {
   items: {
@@ -12,7 +12,7 @@ type Props = {
 };
 const CourseGoalList = ({ items, onDeleteItem }: Props) => {
   return (
-    <ul className="goal-list">
+    <ul className={styles["goal-list"]}>
       {items.map((goal) => (
         <CourseGoalItem key={goal.id} id={goal.id} onDelete={onDeleteItem}>
           {goal.text}
