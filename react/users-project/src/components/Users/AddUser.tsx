@@ -1,5 +1,6 @@
 import React, { BaseSyntheticEvent, useState } from "react";
 import { User } from "../../types/User";
+import Wrapper from "../Helpers/Wrapper";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
 import ErrorModal from "../UI/ErrorModal/ErrorModal";
@@ -60,7 +61,7 @@ const AddUser = ({ handleSubmit }: Props) => {
   };
 
   return (
-    <div>
+    <>
       {error.hasError && (
         <ErrorModal
           message={error.message}
@@ -90,7 +91,7 @@ const AddUser = ({ handleSubmit }: Props) => {
           </form>
         </Card>
       )}
-    </div>
+    </>
   );
 };
 

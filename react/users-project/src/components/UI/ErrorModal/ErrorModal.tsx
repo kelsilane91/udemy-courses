@@ -10,7 +10,7 @@ type Props = {
 };
 const ErrorModal = ({ onConfirm, message, title }: Props) => {
   return (
-    <div>
+    <>
       <div className={styles.backdrop} onClick={onConfirm} />
       <Card className={styles.modal}>
         <header className={styles.header}>
@@ -23,7 +23,7 @@ const ErrorModal = ({ onConfirm, message, title }: Props) => {
           <Button onClick={onConfirm}>Okay</Button>
         </footer>
       </Card>
-    </div>
+    </>
   );
 };
 
