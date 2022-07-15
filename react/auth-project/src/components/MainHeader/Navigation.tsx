@@ -3,11 +3,8 @@ import AuthContext from "../../context/auth-context";
 
 import classes from "./Navigation.module.css";
 
-type Props = {
-  onLogout: () => void;
-};
-const Navigation = ({ onLogout }: Props) => {
-  const { isLoggedIn } = useContext(AuthContext);
+const Navigation = () => {
+  const { isLoggedIn, onLogout } = useContext(AuthContext);
   return (
     <nav className={classes.nav}>
       <ul>

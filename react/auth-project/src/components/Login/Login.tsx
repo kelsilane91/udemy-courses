@@ -3,15 +3,13 @@ import React, {
   useEffect,
   useReducer,
   useState,
+  useContext,
 } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
-
-type Props = {
-  onLogin: (enteredEmail: string, enteredPassword: string) => void;
-};
+import AuthContext from "../../context/auth-context";
 
 type State = {
   value: string;
@@ -61,7 +59,7 @@ const passwordReducer = (state: State, action: Action) => {
     isValid: false,
   };
 };
-const Login = ({ onLogin }: Props) => {
+const Login = () => {
   const [formIsValid, setFormIsValid] = useState<boolean>(false);
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
@@ -71,6 +69,7 @@ const Login = ({ onLogin }: Props) => {
     value: "",
     isValid: false,
   });
+  const { onLogin } = useContext(AuthContext);
 
   useEffect(() => {
     const identifier = setTimeout(() => {
