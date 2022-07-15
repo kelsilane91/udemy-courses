@@ -1,6 +1,5 @@
 import React, {
   BaseSyntheticEvent,
-  ReducerAction,
   useEffect,
   useReducer,
   useState,
@@ -19,16 +18,15 @@ type State = {
   isValid: boolean;
 };
 
-type Action = {
-  type: string;
-  payload?: string;
-};
-const emailReducer = (state: State, action: any) => {
-  // TODO: type the action properly
+type Action = { type: "USER_INPUT"; payload: string } | { type: "INPUT_BLUR" };
+
+const emailReducer = (state: State, action: Action) => {
+  switch (action.type) {
+  }
   if (action.type === "USER_INPUT") {
     return {
       value: action.payload,
-      isValid: action.payload.includes("@"),
+      isValid: action?.payload?.includes("@"),
     };
   }
 
@@ -44,16 +42,15 @@ const emailReducer = (state: State, action: any) => {
   };
 };
 
-const passwordReducer = (state: State, action: any) => {
-  // TODO: type the action properly
-  if (action.type === "PASSWORD_USER_INPUT") {
+const passwordReducer = (state: State, action: Action) => {
+  if (action.type === "USER_INPUT") {
     return {
       value: action.payload,
-      isValid: action.payload.length > 6,
+      isValid: action?.payload?.length > 6,
     };
   }
 
-  if (action.type === "PASSWORD_BLUR") {
+  if (action.type === "INPUT_BLUR") {
     return {
       value: state.value,
       isValid: state.value.length > 6,
@@ -89,23 +86,21 @@ const Login = ({ onLogin }: Props) => {
 
   const emailChangeHandler = (event: BaseSyntheticEvent) => {
     dispatchEmail({ type: "USER_INPUT", payload: event.target.value });
-    // setFormIsValid()
   };
 
   const passwordChangeHandler = (event: BaseSyntheticEvent) => {
     dispatchPassword({
-      type: "PASSWORD_USER_INPUT",
+      type: "USER_INPUT",
       payload: event.target.value,
     });
   };
 
   const validateEmailHandler = () => {
     dispatchEmail({ type: "INPUT_BLUR" });
-    // setEmailIsValid(enteredEmail.includes("@"));
   };
 
   const validatePasswordHandler = () => {
-    dispatchPassword({ type: "PASSWORD_BLUR" });
+    dispatchPassword({ type: "INPUT_BLUR" });
   };
 
   const submitHandler = (event: BaseSyntheticEvent) => {
