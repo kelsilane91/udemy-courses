@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { ReactNode } from "react";
 
-import classes from './Button.module.css';
+import classes from "./Button.module.css";
 
-const Button = (props) => {
+type Props = {
+  className: string;
+  children: ReactNode;
+  onClick?: () => void;
+  type: "button" | "submit" | "reset" | undefined;
+  disabled: boolean;
+};
+const Button = ({ className, children, onClick, type, disabled }: Props) => {
   return (
     <button
-      type={props.type || 'button'}
-      className={`${classes.button} ${props.className}`}
-      onClick={props.onClick}
-      disabled={props.disabled}
+      type={type || "button"}
+      className={`${classes.button} ${className}`}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {props.children}
+      {children}
     </button>
   );
 };
