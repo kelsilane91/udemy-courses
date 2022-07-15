@@ -7,15 +7,13 @@ type Props = {
   children: ReactNode;
   onClick?: () => void;
   type: "button" | "submit" | "reset" | undefined;
-  disabled: boolean;
 };
-const Button = ({ className, children, onClick, type, disabled }: Props) => {
+const Button = ({ className, children, onClick, type }: Props) => {
   return (
     <button
       type={type || "button"}
       className={`${classes.button} ${className}`}
       onClick={onClick}
-      disabled={disabled}
     >
       {children}
     </button>
