@@ -11,7 +11,7 @@ const MainHeader = ({ isAuthenticated, onLogout }: Props) => {
   return (
     <header className={classes["main-header"]}>
       <h1>A Typical Page</h1>
-      <Navigation isLoggedIn={isAuthenticated} onLogout={onLogout} />
+      <Navigation onLogout={onLogout} />
     </header>
   );
 };
