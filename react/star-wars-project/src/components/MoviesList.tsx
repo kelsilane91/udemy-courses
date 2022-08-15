@@ -8,6 +8,7 @@ type Props = {
   movies: MovieType[];
 };
 const MovieList = ({ movies }: Props) => {
+  console.log(movies);
   return (
     <ul className={classes["movies-list"]}>
       {movies.map((movie) => (
